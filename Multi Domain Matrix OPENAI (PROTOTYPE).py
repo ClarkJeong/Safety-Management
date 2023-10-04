@@ -171,7 +171,6 @@ class MultiDomainMatrixApp:
                 domain_interaction_dict[domain1] = {}
             domain_interaction_dict[domain1][domain2] = interaction_text
 
-        # Create the matrix
         matrix = [["" for _ in domains] for _ in domains]
         for i, domain_row in enumerate(domains):
             for j, domain_col in enumerate(domains):
@@ -181,7 +180,6 @@ class MultiDomainMatrixApp:
                     if domain_row in domain_interaction_dict and domain_col in domain_interaction_dict[domain_row]:
                         matrix[i][j] = domain_interaction_dict[domain_row][domain_col]
 
-        # Display the matrix
         header = "\t".join(domains)
         self.matrix_text.insert(tk.END, "\t" + header + "\n")
         for i, row in enumerate(matrix):
@@ -194,12 +192,10 @@ class MultiDomainMatrixApp:
     def update_comboboxes(self):
         domains = list(self.domain_listbox.get(0, tk.END))
         
-        # Update domain1_combobox
         self.domain1_combobox["values"] = domains
         if domains:
             self.domain1_combobox.set(domains[0])
 
-        # Update domain2_combobox
         self.domain2_combobox["values"] = domains
         if domains:
             self.domain2_combobox.set(domains[0])
